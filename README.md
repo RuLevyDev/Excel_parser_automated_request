@@ -3,7 +3,7 @@
 ```markdown
 # Proyecto Rust: Envío de Actividades a un API
 
-Este proyecto en Rust se encarga de cargar actividades desde un archivo Excel, convertirlas a formato JSON y enviarlas a un endpoint API utilizando solicitudes POST. Además, maneja la autenticación mediante un token de autorización (Bearer Token).
+Este proyecto en Rust se encarga de cargar actividades desde un archivo Excel, convertirlas a formato JSON y enviarlas a un endpoint API utilizando solicitudes POST
 
 ## Requisitos
 
@@ -33,7 +33,7 @@ cargo build
 Este proyecto espera un archivo Excel que contenga actividades organizadas por sección. El archivo debe estar en formato `.xlsx` y debe seguir la estructura esperada.
 
 
-### 3. **Cargar Actividades desde Excel y Enviar al API**
+### 2. **Cargar Actividades desde Excel y Enviar al API**
 
 El programa carga actividades desde el archivo Excel y envía cada actividad a un endpoint utilizando una solicitud POST. Asegúrate de que el archivo Excel esté en la misma carpeta o especifica la ruta correcta.
 
@@ -45,7 +45,7 @@ cargo run
 
 El programa buscará el archivo `programming-table-2.xlsx` y lo procesará, enviando cada actividad a la URL configurada en el código.
 
-### 4. **Respuestas del API**
+### 3. **Respuestas del API**
 
 El programa manejará las respuestas del API. Si una solicitud es exitosa, se imprimirá el mensaje de éxito; si ocurre un error (por ejemplo, `401 Unauthorized`), se imprimirá el error correspondiente.
 

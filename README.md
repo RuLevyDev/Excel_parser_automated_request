@@ -4,19 +4,10 @@
 
 <h1><a href="https://github.com/RuLevyDev
 /">Ruben Levy
-</a> -Rust</h1>
-
-<!-- Labels: -->
-
-<a href="https://github.com/RuLevyDev
-/
-Excel_parser_automated_request/actions/workflows/build.yml">
-  <img src="https://github.com/RuLevyDev
-/
-Excel_parser_automated_request/actions/workflows/build.yml/badge.svg" height="20" alt="Build workflow">
+</a></h1>
+<a href="https://github.com/RuLevyDev/Excel_parser_automated_request/actions/workflows/rust.yml">
+  <img src="https://github.com/RuLevyDev/Excel_parser_automated_request/actions/workflows/rust.yml/badge.svg" height="20" alt="Build workflow">
 </a>
-
-
 
 ```markdown
 # Proyecto Rust: Envío de Actividades a un API

@@ -45,8 +45,3 @@ jobs:
       run: cargo test --verbose
     - name: Build documentation
       run: cargo doc --no-deps --document-private-items
-    - name: Upload binary artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: excel_parser_binary
-        path: target/release/excel_parser

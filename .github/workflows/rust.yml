@@ -39,7 +39,14 @@ jobs:
       run: cargo build --verbose
     - name: Build in release mode
       run: cargo build --release
+    - name: List contents of target/release
+      run: ls -l target/release/
     - name: Run tests
       run: cargo test --verbose
     - name: Build documentation
       run: cargo doc --no-deps --document-private-items
+    - name: Upload binary artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: excel_parser_binary
+        path: target/release/excel_parser

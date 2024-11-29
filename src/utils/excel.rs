@@ -93,9 +93,9 @@ pub fn load_actividades(path: &str, sheet_name: &str) -> Result<Seccion, Box<dyn
             if row.len() >= 68 {
                 // Calentamiento (warming-up phase)
                 if let Some(act) = create_actividad(
-                    row,                        // <-- Eliminado &
+                    row,                        
                     4,
-                    create_content(row, 11),    // <-- Eliminado &
+                    create_content(row, 11),
                     "calentamiento".to_string(),
                 ) {
                     calentamiento.push(act);

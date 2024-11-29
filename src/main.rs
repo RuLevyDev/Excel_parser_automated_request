@@ -24,6 +24,23 @@ fn main() -> Result<(), Box<dyn Error>> {
     let endpoint = "";
 
     // Iterate over each activity and make a POST request
+     for actividad in seccion.calentamiento {
+        let actividad_json = serde_json::to_string(&actividad)?; // Convert the activity to JSON
+        println!("Enviando actividad: {}", actividad.id);
+
+         // Send the POST request
+        match post_request(&actividad_json, endpoint) {
+            Ok(response) => {
+                println!("Actividad enviada correctamente: {}", response);
+            }
+            Err(e) => {
+                eprintln!("Error al enviar la actividad '{}': {}", actividad.phase, e);
+            }
+        }
+
+       
+        // std::thread::sleep(std::time::Duration::from_secs(1));
+    }
     for actividad in seccion.ejercicio1 {
         let actividad_json = serde_json::to_string(&actividad)?; // Convert the activity to JSON
         println!("Sending activity: {}", actividad.id);
@@ -39,8 +56,45 @@ fn main() -> Result<(), Box<dyn Error>> {
         }
 
         // If a small delay is desired between each request (for example, to avoid overloading the server):
-        std::thread::sleep(std::time::Duration::from_secs(1));
+        // std::thread::sleep(std::time::Duration::from_secs(1));
     }
+    
+  
+    for actividad in seccion.ejercicio2 {
+        let actividad_json = serde_json::to_string(&actividad)?; //  Convert the activity to JSON
+        println!("Enviando actividad: {}", actividad.id);
+
+         // Send the POST request
+        match post_request(&actividad_json, endpoint) {
+            Ok(response) => {
+                println!("Actividad enviada correctamente: {}", response);
+            }
+            Err(e) => {
+                eprintln!("Error al enviar la actividad '{}': {}", actividad.phase, e);
+            }
+        }
+
+       
+       
+    }
+     for actividad in seccion.ejercicio2 {
+        let actividad_json = serde_json::to_string(&actividad)?; // Convert the activity to JSON
+        println!("Enviando actividad: {}", actividad.id);
+
+         // Send the POST request
+        match post_request(&actividad_json, endpoint) {
+            Ok(response) => {
+                println!("Actividad enviada correctamente: {}", response);
+            }
+            Err(e) => {
+                eprintln!("Error al enviar la actividad '{}': {}", actividad.phase, e);
+            }
+        }
+
+       
+      
+    }
+    
 
     Ok(())
 }

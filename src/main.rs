@@ -8,39 +8,40 @@ use utils::excel::load_actividades;
 use utils::post_request::post_request;
 
 fn main() -> Result<(), Box<dyn Error>> {
-    // Cargar actividades desde el archivo Excel
+    // Load activities from the Excel file
     let path = "programming-table-2.xlsx";
 
     if !std::path::Path::new(path).exists() {
-        println!("Archivo no encontrado en: {}", path);
+        println!("File not found at: {}", path);
         return Ok(());
     }
 
-    // Suponemos que "load_actividades" devuelve una Sección con una lista de actividades
+    // We assume that "load_actividades" returns a Section with a list of activities
     let seccion: Seccion = load_actividades(path, "1. DERECHA PLANA")?;
     println!("{:#?}", seccion);
 
-    // URL del endpoint donde se enviarán las actividades
+    // URL of the endpoint where the activities will be sent
     let endpoint = "";
 
-    // Iterar sobre cada actividad y hacer un POST request
+    // Iterate over each activity and make a POST request
     for actividad in seccion.ejercicio1 {
-        let actividad_json = serde_json::to_string(&actividad)?; // Convertir la actividad a JSON
-        println!("Enviando actividad: {}", actividad.id);
+        let actividad_json = serde_json::to_string(&actividad)?; // Convert the activity to JSON
+        println!("Sending activity: {}", actividad.id);
 
-        // Enviar la solicitud POST
+        // Send the POST request
         match post_request(&actividad_json, endpoint) {
             Ok(response) => {
-                println!("Actividad enviada correctamente: {}", response);
+                println!("Activity sent successfully: {}", response);
             }
             Err(e) => {
-                eprintln!("Error al enviar la actividad '{}': {}", actividad.phase, e);
+                eprintln!("Error sending activity '{}': {}", actividad.phase, e);
             }
         }
 
-        // Si se desea un pequeño retraso entre cada solicitud (por ejemplo, para evitar sobrecargar el servidor):
+        // If a small delay is desired between each request (for example, to avoid overloading the server):
         std::thread::sleep(std::time::Duration::from_secs(1));
     }
 
     Ok(())
 }
+

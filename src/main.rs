@@ -77,7 +77,7 @@ fn main() -> Result<(), Box<dyn Error>> {
        
        
     }
-     for actividad in seccion.ejercicio2 {
+     for actividad in seccion.parte_final {
         let actividad_json = serde_json::to_string(&actividad)?; // Convert the activity to JSON
         println!("Enviando actividad: {}", actividad.id);
 

@@ -117,7 +117,6 @@ pub fn load_actividades(path: &str, sheet_name: &str) -> Result<Seccion, Box<dyn
                 }
             }
         }
-
         Ok(Seccion {
             calentamiento,
             ejercicio1,

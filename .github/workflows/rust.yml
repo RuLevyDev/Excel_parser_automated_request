@@ -22,6 +22,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Ensure cache directories exist
+      run: mkdir -p ~/.cargo/registry ~/.cargo/git
+
     - name: Cache Cargo registry
       uses: actions/cache@v3
       with:
@@ -50,19 +53,17 @@ jobs:
     - name: Build in release mode
       run: cargo build --release
 
-    - name: List release files
-      run: |
-        echo "Listing files in target/release/"
-        ls -l target/release/
-
     - name: Run tests
       run: cargo test --verbose
 
     - name: Build documentation
       run: cargo doc --no-deps --document-private-items
 
-    - name: Upload artifact
+    - name: List release files
+      run: ls -l target/release/
+
+    - name: Upload binary artifact
       uses: actions/upload-artifact@v3
       with:
         name: binary
-        path: target/release/*
+        path: target/release/excel_parser

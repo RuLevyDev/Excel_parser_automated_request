@@ -10,10 +10,8 @@ env:
   CARGO_TERM_COLOR: always
 
 jobs:
-  build:
-
+  setup:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Cache Cargo registry
@@ -23,7 +21,6 @@ jobs:
         key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
         restore-keys: |
           ${{ runner.os }}-cargo-registry-
-
     - name: Cache Cargo index
       uses: actions/cache@v4
       with:
@@ -31,17 +28,41 @@ jobs:
         key: ${{ runner.os }}-cargo-index-${{ hashFiles('**/Cargo.lock') }}
         restore-keys: |
           ${{ runner.os }}-cargo-index-
+
+  lint:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
     - name: Run Clippy
       run: cargo clippy --all-targets --all-features -- -D warnings
     - name: Run Rustfmt
       run: cargo fmt -- --check
-    - name: Build
+
+  build:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Build in debug mode
       run: cargo build --verbose
     - name: Build in release mode
       run: cargo build --release
     - name: List contents of target/release
       run: ls -l target/release/
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
     - name: Run tests
       run: cargo test --verbose
+
+  docs:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
     - name: Build documentation
       run: cargo doc --no-deps --document-private-items

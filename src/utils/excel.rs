@@ -92,39 +92,27 @@ pub fn load_actividades(path: &str, sheet_name: &str) -> Result<Seccion, Box<dyn
         for row in range.rows().skip(3) {
             if row.len() >= 68 {
                 // Calentamiento (warming-up phase)
-                if let Some(act) = create_actividad(
-                    row,
-                    4,
-                    create_content(row, 11),
-                    "calentamiento".to_string(),
-                ) {
+                if let Some(act) =
+                    create_actividad(row, 4, create_content(row, 11), "calentamiento".to_string())
+                {
                     calentamiento.push(act);
                 }
                 // Ejercicio 1 (exercise 1 phase)
-                if let Some(act) = create_actividad(
-                    row,
-                    20,
-                    create_content(row, 27),
-                    "ejercicio1".to_string(),
-                ) {
+                if let Some(act) =
+                    create_actividad(row, 20, create_content(row, 27), "ejercicio1".to_string())
+                {
                     ejercicio1.push(act);
                 }
                 // Ejercicio 2 (exercise 2 phase)
-                if let Some(act) = create_actividad(
-                    row,
-                    36,
-                    create_content(row, 43),
-                    "ejercicio2".to_string(),
-                ) {
+                if let Some(act) =
+                    create_actividad(row, 36, create_content(row, 43), "ejercicio2".to_string())
+                {
                     ejercicio2.push(act);
                 }
                 // Parte final (final phase)
-                if let Some(act) = create_actividad(
-                    row,
-                    52,
-                    create_content(row, 59),
-                    "parte_final".to_string(),
-                ) {
+                if let Some(act) =
+                    create_actividad(row, 52, create_content(row, 59), "parte_final".to_string())
+                {
                     parte_final.push(act);
                 }
             }

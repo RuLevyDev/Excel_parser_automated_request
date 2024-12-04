@@ -21,7 +21,8 @@ fn main() -> Result<(), Box<dyn Error>> {
     println!("{:#?}", seccion);
 
     // URL of the endpoint where the activities will be sent
-    let endpoint = "";
+    let endpoint =
+        "https://prodigypadel-cms-api-dev.azurewebsites.net/api/programming/exercise/update";
 
     // Send warming-up activities
     for actividad in seccion.calentamiento {

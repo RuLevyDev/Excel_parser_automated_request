@@ -10,7 +10,7 @@ pub struct Content {
     pub title: String,
 
     /// Objective of the content, describing what is intended to be achieved with it.
-    pub objetivo: String,
+    pub goal: String,
 
     /// Script associated with the content, which could be instructions or details
     /// about how to perform or understand the content.

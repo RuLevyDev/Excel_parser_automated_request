@@ -13,22 +13,22 @@ pub struct Actividad {
     pub id: String,
 
     /// Type of shot associated with the activity.
-    pub golpe: String,
+    pub golpe: i32,
 
     /// Phase of shot associated with the activity.
     pub phase: String,
 
     /// List of player IDs involved in the activity.
-    pub num_jugadores: Vec<String>,
+    pub num_jugadores: Vec<i32>,
 
     /// Player typologies the activity is designed for.
-    pub tipologia_jugador: Vec<String>,
+    pub typology: Vec<String>,
 
     /// Skill levels targeted by the activity.
-    pub nivel: Vec<String>,
+    pub level: Vec<String>,
 
     /// Objectives intended to be achieved through the activity.
-    pub goal: Vec<String>,
+    pub model: Vec<String>,
 
     /// Types of shots practiced in the activity.
     pub shot: Vec<String>,
@@ -37,10 +37,10 @@ pub struct Actividad {
     pub part_to_practice: Vec<String>,
 
     /// Equipment or materials required for the activity.
-    pub material: Vec<String>,
+    pub equipment: Vec<String>,
 
     /// Estimated duration of the activity, represented as text (e.g., "30 minutes").
-    pub tiempo: String,
+    pub duration: String,
 
     /// Associated content for the activity, represented as a key-value map.
     /// Keys are strings, and values are instances of `Content`.
